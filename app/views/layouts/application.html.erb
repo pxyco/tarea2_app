@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "Home" %></title>
 
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
@@ -17,16 +17,21 @@
   <div class="sticky sticky-topbar" data-sticky data-options="anchor: page; marginTop: 0; stickyOn: small;">
     <div class="top-bar">
       <div class="top-bar-left">
-        <ul class="dropdown menu" data-dropdown-menu>
+        <!--<ul class="dropdown menu" data-dropdown-menu>-->
+        <ul class="menu">
           <li class="menu-text">Site Title</li>
-           <li><%= link_to "Home",   root_path %></li>
-          <li><a href="#">Three</a></li>
+          <li><%= link_to "Home",   root_path %></li>
+          <% if current_user %> <li><%= link_to "Posts",   posts_path %></li> <% end %>
         </ul>
       </div>
       <div class="top-bar-right">
         <ul class="menu">
-          <li><input type="search" placeholder="Search"></li>
-          <li><button type="button" class="button">Search</button></li>
+          <% if current_user %>
+            <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>
+          <% else %>  
+            <li><%= link_to 'Sign up', new_user_registration_path %></li>
+            <li><%= link_to 'Sign in', new_user_session_path %></li>
+          <% end %>
         </ul>
       </div>
     </div>
@@ -36,6 +41,6 @@
 
   
     <%= yield %>
-
+    <%= debug(params) if Rails.env.development? %>
   </body>
 </html>

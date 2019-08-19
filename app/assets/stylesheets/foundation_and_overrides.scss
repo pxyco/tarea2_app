@@ -55,39 +55,54 @@
 // @include motion-ui-transitions;
 // @include motion-ui-animations;
 
-$foundation-5-top-bar-bg: #333;
-$foundation-5-top-bar-text-color: $white;
+.blockquote-container {
+  &.blockquote-left {
+    float: left;
+    width: 35%;
+    margin-right: $global-margin;
 
-.foundation-5-top-bar {
-  background: $foundation-5-top-bar-bg;
-  color: $foundation-5-top-bar-text-color;
-
-  .menu {
-    background: $foundation-5-top-bar-bg;
-
-    a {
-      color: $foundation-5-top-bar-text-color;
+    @include breakpoint (small only) {
+      float: none;
+      margin: 0;
+      width: 100%;
     }
   }
 
-  .is-dropdown-submenu {
-    border: 0;
+  &.blockquote-right {
+    float: right;
+    width: 35%;
+    margin-left: $global-margin;
   }
 
-  .is-dropdown-submenu-item.opens-right a::after {
-    border-color: transparent transparent transparent $foundation-5-top-bar-text-color;
-  }
+  .callout {
+    .blockquote-title {
+      margin-left: 1rem;
+    }
 
-  .js-drilldown-back > a::before {
-    border-color: transparent $foundation-5-top-bar-text-color transparent transparent;
-  }
+    blockquote {
+      quotes: "“""”""‘""’  ";
+      border-left: none;
 
-  .is-drilldown-submenu-parent > a::after {
-    border-color: transparent transparent transparent $foundation-5-top-bar-text-color;
-  }
+      &:before {
+        content: open-quote;
+        color: $dark-gray;
+        font-size: 4em;
+        line-height: 0.1em;
+        vertical-align: -0.4em;
+      }
 
-  .dropdown.menu.medium-horizontal > li.is-dropdown-submenu-parent > a::after {
-    border-color: $foundation-5-top-bar-text-color transparent transparent;
+      &:after {
+        content: close-quote;
+        color: $dark-gray;
+        font-size: 4em;
+        line-height: 0.1em;
+        vertical-align: -0.6em;
+      }
+
+      .blockquote-content {
+        display: inline;
+        color: $black;
+      }
+    }
   }
 }
-

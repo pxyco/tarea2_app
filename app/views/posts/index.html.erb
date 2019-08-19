@@ -19,7 +19,7 @@
         <td><%= post.title %></td>
         <td><%= post.body %></td>
         <td><%= post.text %></td>
-        <td><%= post.user %></td>
+        <td><%= post.user.name %></td>
         <td><%= link_to 'Show', post %></td>
         <td><%= link_to 'Edit', edit_post_path(post) %></td>
         <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -31,3 +31,30 @@
 <br>
 
 <%= link_to 'New Post', new_post_path %>
+
+<BR><BR>
+  
+<%= current_user.email %>
+
+  <h1 class="blockquote-title">Mensajes</h1>
+<% @posts.each do |post| %>
+  <% 
+    paraMostrar = current_user.prueba.split(', ')
+    paraMostrar.each do |numPost|  
+      if post.id == numPost.to_i %>
+        <BR>
+        <blockquote>
+          <p class="blockquote-content">
+          <%= post.title %> <BR>
+          <%= post.text %> <BR>
+          <%= post.user.name %>
+          <%= form_with(model: post, local: true) do |form| %>
+            <div class="actions">
+              <%= form.submit %>
+            </div>
+          <% end %>    
+          </p>
+        </blockquote>
+      <% end %>
+    <% end %>
+<% end %>
