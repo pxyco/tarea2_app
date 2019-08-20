@@ -1,14 +1,13 @@
-<h2>Hola, <%= @user.name %>!</h2>
+<h2>Hi, <%= @user.name %>!</h2>
 
 <p id="notice"><%= notice %></p>
 
-
-<%= link_to 'New Post', new_post_path %>
+<%= link_to 'New Post', new_post_path, class: "button secondary" %>
 
 <BR><BR>
   
 
-  <h3 class="blockquote-title">Tus mensajes nuevos</h3>
+  <h3 class="blockquote-title">Your unread messages</h3>
   
   <% @posts.each do |post| %>
     <% 
