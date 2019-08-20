@@ -13,6 +13,9 @@
   <% @posts.each do |post| %>
     <% 
     leidos = @user.prueba
+    if leidos == nil
+      leidos = ""
+    end
     cadena = " " + post.id.to_s + " "
     if leidos.include? cadena 
     else %>
