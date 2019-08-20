@@ -12,9 +12,10 @@
   
   <% @posts.each do |post| %>
     <% 
-    #leidos = @user.prueba.split(', ')
-    #if leidos.include? post.id.to_s 
-    #else %>
+    leidos = @user.prueba
+    cadena = " " + post.id.to_s + " "
+    if leidos.include? cadena 
+    else %>
       <BR>
       <blockquote>
         <p class="blockquote-content">
@@ -31,5 +32,5 @@
         <% end %>    
         </p>
       </blockquote>
-    <% #end %>
+    <% end %>
   <% end %>

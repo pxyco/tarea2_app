@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     # @post = Post.find(params[:id])
     # numPosts = "1, 2, 3"
     # numPosts = current_user.prueba + ", " +  params[:user][:prueba]
-    numPosts = current_user.prueba + ", " +  params[:name]
+    numPosts = current_user.prueba + " " +  params[:name] + " "
     # numPosts = params[:user][:prueba]
     pag = '/users/'
     pag.concat(current_user.id.to_s)
