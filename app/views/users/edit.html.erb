@@ -1,0 +1,33 @@
+<h1><%= @user.name %></h1>
+
+<p id="notice"><%= notice %></p>
+
+
+<%= link_to 'New Post', new_post_path %>
+
+<BR><BR>
+  
+<%= current_user.email %>
+
+  <h1 class="blockquote-title">Mensajes</h1>
+<% @posts.each do |post| %>
+  <% 
+    paraMostrar = current_user.prueba.split(', ')
+    paraMostrar.each do |numPost|  
+      if post.id == numPost.to_i %>
+        <BR>
+        <blockquote>
+          <p class="blockquote-content">
+          <%= post.title %> <BR>
+          <%= post.text %> <BR>
+          <%= post.user.name %>
+          <%= form_for(@user) do |f| %>
+            <div class="actions">
+              <%= f.submit "Mark as read", class: "btn btn-primary"%>
+            </div>
+          <% end %>    
+          </p>
+        </blockquote>
+      <% end %>
+    <% end %>
+<% end %>

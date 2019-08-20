@@ -12,13 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title, id: :post_title %>
-  </div>
-
-  <div class="field">
     <%= form.label :text %>
-    <%= form.text_field :text, id: :post_text %>
+    <%= form.text_area :text, placeholder: "Compose new message..." %>
   </div>
 
   <!--<div class="field">-->

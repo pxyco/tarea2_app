@@ -1,0 +1,36 @@
+<h2>Hola, <%= @user.name %>!</h2>
+
+<p id="notice"><%= notice %></p>
+
+
+<%= link_to 'New Post', new_post_path %>
+
+<BR><BR>
+  
+
+  <h3 class="blockquote-title">Tus mensajes nuevos</h3>
+  
+  <% @posts.each do |post| %>
+    <% 
+    leidos = current_user.prueba.split(', ')
+    if leidos.include? post.id.to_s 
+    else %>
+      <BR>
+      <blockquote>
+        <p class="blockquote-content">
+        <%= post.user.name %>: <BR>
+        <%= post.text %> <BR>
+
+        <%= form_for(@user) do |f| %>
+  
+          <input type="hidden" name="_method" value="patch" />
+          <input type="hidden" name="authenticity_token" value="2nsBo2cmE/Qz2Lu+ftUVF4zHbbXRpmJrd0Fmvqsxq09PSuFdb7S9YxWiqFBuCZl/nEHjtagZPKKt/boh8IMZIw==" />
+          <input type="hidden" value=<%= post.id %> name="user[prueba]" id="user_prueba" />
+          <div class="actions">
+            <%= f.submit "Mark as read", class: "btn btn-primary"%>
+          </div>
+        <% end %>    
+        </p>
+      </blockquote>
+    <% end %>
+  <% end %>
