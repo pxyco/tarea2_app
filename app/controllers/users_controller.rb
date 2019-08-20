@@ -2,11 +2,11 @@ class UsersController < ApplicationController
   def index
     @users = User.all
     @posts = Post.all
-    if current_user
-      pag = '/users/'
-      pag.concat(current_user.id.to_s)
-      redirect_to pag
-    end
+    # if current_user
+    #   pag = '/users/'
+    #   pag.concat(current_user.id.to_s)
+    #   redirect_to pag
+    # end
   end
   
   def show
