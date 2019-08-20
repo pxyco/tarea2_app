@@ -22,11 +22,10 @@
         <%= post.text %> <BR>
 
         <%= form_for(@user) do |f| %>
-  
-          <input type="hidden" name="_method" value="patch" />
-          <input type="hidden" name="authenticity_token" value="2nsBo2cmE/Qz2Lu+ftUVF4zHbbXRpmJrd0Fmvqsxq09PSuFdb7S9YxWiqFBuCZl/nEHjtagZPKKt/boh8IMZIw==" />
-          <input type="hidden" value=<%= post.id %> name="user[prueba]" id="user_prueba" />
-          <div class="actions">
+
+            <%= f.label :name %>
+            <%= hidden_field_tag(:name, post.id) %>
+            
             <%= f.submit "Mark as read", class: "btn btn-primary"%>
           </div>
         <% end %>    
