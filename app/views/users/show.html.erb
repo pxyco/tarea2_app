@@ -12,7 +12,7 @@
   
   <% @posts.each do |post| %>
     <% 
-    leidos = current_user.prueba.split(', ')
+    leidos = @user.prueba.split(', ')
     if leidos.include? post.id.to_s 
     else %>
       <BR>
