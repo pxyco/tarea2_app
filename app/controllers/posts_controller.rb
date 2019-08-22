@@ -5,6 +5,7 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     @posts = Post.all
+    @user = current_user
   end
 
   # GET /posts/1
@@ -60,6 +61,18 @@ class PostsController < ApplicationController
       format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+  
+  def update_read_post
+    numPosts = current_user.readed_posts
+    if numPosts == nil
+      numPosts = ""
+    end
+    numPosts +=  " " +  params[:value] + " "
+    pag = '/users/'
+    pag.concat(current_user.id.to_s)
+    current_user.update_attribute(:readed_posts, numPosts)
+    redirect_to posts_path
   end
 
   private

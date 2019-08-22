@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
-  get 'users/index'
   match '/users/:id',     to: 'users#show',       via: 'get'
   # resources :users, :only =>[:show, :edit]
   
-  resources :users
-  resources :posts
-  root to: "users#index"
+#  resources :users
+  root to: "posts#index"      
+  
+  resources :posts do
+    patch :update_read_post
+  end
+
 
   # devise_for :users
   devise_for :users, :path_prefix => 'd'

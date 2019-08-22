@@ -24,7 +24,7 @@
         <%= post.user.name %>: <BR>
         <%= post.text %> <BR>
 
-        <%= form_for(@user) do |f| %>
+        <%= form_for(@user, url: user_update_read_post_path(@user.id)) do |f| %>
 
             <%= f.label :name %>
             <%= hidden_field_tag(:name, post.id) %>
