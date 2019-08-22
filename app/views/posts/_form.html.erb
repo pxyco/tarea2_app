@@ -15,6 +15,30 @@
     <%= form.label :text %>
     <%= form.text_area :text, placeholder: "Compose new message..." %>
   </div>
+  
+  
+  
+    <h4>Expires after:</h4> <h6>(default: Expires after 1 hour)</h6>
+    <div class="grid-x grid-padding-x">
+      <div class="cell small-1">
+        <%= label_tag(:days, "Days:") %> 
+        <%= text_field_tag(:days) %>
+      </div>
+      <div class="cell small-1">
+        <%= label_tag(:hours, "Hours:") %>
+        <%= text_field_tag(:hours) %>
+      </div>
+      <div class="cell small-1">
+        <%= label_tag(:minutes, "Minutes:") %>
+        <%= text_field_tag(:minutes) %>
+      </div>
+      <div class="cell small-1">
+        <%= label_tag(:seconds, "Seconds:") %>
+        <%= text_field_tag(:seconds) %>
+      </div>
+    </div>
+  
+  <BR>    
 
   <div class="actions">
     <%= form.submit %>

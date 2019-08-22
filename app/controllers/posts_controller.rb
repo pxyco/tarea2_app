@@ -38,6 +38,12 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(post_params)
+    if params[:days].to_i==0 && params[:hours].to_i==0 && params[:minutes].to_i==0 && params[:seconds].to_i==0
+      @post.expires_at =  DateTime.now + 1.hours
+    else
+      @post.expires_at =  DateTime.now + params[:days].to_i.days + params[:hours].to_i.hours + 
+                          params[:minutes].to_i.minutes + params[:seconds].to_i.seconds
+    end
     @post.user = current_user
     respond_to do |format|
       if @post.save

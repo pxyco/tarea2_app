@@ -1,9 +1,12 @@
 <% if user_signed_in? %>
+
+  <BR><BR>
+  
   <h2>Hi, <%= @user.name %>!</h2>
 
   <p id="notice"><%= notice %></p>
   
-  <%= link_to 'New Post', new_post_path, class: "button secondary" %>
+  <%= link_to 'New Post', new_post_path, class: "button alert" %>
   
   <BR><BR>
     
@@ -26,7 +29,7 @@
 
         <%= form_for(post, url: post_update_read_post_path(post.id)) do |f| %>
             <%= hidden_field_tag(:value, post.id) %>
-            <%= f.submit "Mark as read", class: "btn btn-primary"%>
+            <%= f.submit "Mark as read", class: "button small"%>
         <% end %>    
         </p>
       </blockquote>
@@ -34,6 +37,7 @@
   <% end %>
 
 <% else %>  
+  <BR><BR>
   <h2>All posts</h2>
   <p id="notice"><%= notice %></p>
   <% @posts.each do |post| %>

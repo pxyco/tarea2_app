@@ -10,5 +10,11 @@
   <%= @post.user.name %>
 </p>
 
+<p>
+  <strong>Expires at:</strong>
+  <% hora = @post.expires_at - 5.hours %>
+  <%= hora.strftime('%D - %T') %>
+</p>
+
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', root_path %>
