@@ -59,6 +59,12 @@ class PostsController < ApplicationController
   # PATCH/PUT /posts/1
   # PATCH/PUT /posts/1.json
   def update
+    if params[:days].to_i==0 && params[:hours].to_i==0 && params[:minutes].to_i==0 && params[:seconds].to_i==0
+      @post.expires_at =  DateTime.now + 1.hours
+    else
+      @post.expires_at =  DateTime.now + params[:days].to_i.days + params[:hours].to_i.hours + 
+                          params[:minutes].to_i.minutes + params[:seconds].to_i.seconds
+    end
     respond_to do |format|
       if @post.update(post_params)
         format.html { redirect_to @post, notice: 'Post was successfully updated.' }
